@@ -1,0 +1,27 @@
+#:import os os
+<Main>:
+	Button:
+		size_hint:(0.1,0.05)
+		pos_hint:{'right':1,'top':1}
+		text:'Load files'
+		on_release:root.open_popup()
+<Dialog>:
+	FileChooserListView:
+		id: filechooser
+	    dirselect:True
+	    rootpath:'/'
+	    show_hidden:True
+# change rootpath to os.getenv("HOME")	
+	BoxLayout:
+		size_hint_y: None
+	    height: 30
+	    Button:
+	    	text: "Load"		
+	        on_press:root.load(filechooser.selection)
+	   
+<VidWindow>:
+	Label:
+		text:root.files
+		text_size:self.size
+	
+	       
